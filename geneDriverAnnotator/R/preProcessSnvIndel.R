@@ -19,8 +19,8 @@ filterVcf <- function(
    vcf.file, out.file, mode=NULL, bed.file=BED_FILE,
    java.path=JAVA_PATH, snpsift.path=SNPSIFT_PATH
 ){
-   #vcf.file='/Users/lnguyen/hpc/cog_bioinf/cuppen/project_data/HMF_data/DR-104/data/somatics/191205_HMFregCPCT_FR16670564_FR17496616_CPCT02020989/CPCT02020989T.purple.somatic.vcf.gz'
-   #out.file='/Users/lnguyen/hpc/cog_bioinf/cuppen/project_data/Luan_projects/CHORD/scripts_main/hmfGeneAnnotation/scripts_prototype/test_output/CPCT02020989T.purple.somatic.ss.vcf.gz'
+   #vcf.file='/Users/lnguyen/hpc/cuppen/shared_resources/HMF_data/DR-104/data//somatics/171002_HMFregCPCT_FR12246237_FR15412823_CPCT02380011/CPCT02380011T.purple.somatic.vcf.gz'
+   #out.file='/Users/lnguyen/hpc/cuppen/projects/P0013_WGS_patterns_Diagn/datasets/processed/HMF_DR104/scripts/annotate_genes_jesko/raw/CPCT02380011T/CPCT02380011T.purple.somatic.ss.vcf.gz'
    
    if(mode=='som'){
       filter_string <- "\"(na FILTER) | (FILTER='PASS')\""
