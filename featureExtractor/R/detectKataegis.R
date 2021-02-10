@@ -45,6 +45,8 @@ detectKataegis <- function(
    # vcf.file='/Users/lnguyen/hpc/cuppen/shared_resources/HMF_data/DR-104/data//somatics/171002_HMFregCPCT_FR12246237_FR15412823_CPCT02380011/CPCT02380011T.purple.somatic.vcf.gz'
    # vcf.file='/Users/lnguyen/hpc/cuppen/shared_resources/HMF_data/DR-104/data/somatics/180808_HMFregCPCT_FR17759299_FR16983385_CPCT02020785/CPCT02020785T.purple.somatic.vcf.gz' ## Hypermutator n_kat=1600
    # vcf.file='/Users/lnguyen/hpc/cuppen/shared_resources/HMF_data/DR-104/data/somatics/170311_HMFregCPCT_FR13274491_FR10244756_CPCT02010503/CPCT02010503T.purple.somatic.vcf.gz' ## Medium hypermutator k_kat=200
+   # vcf.file='/Users/lnguyen/hpc/cuppen/shared_resources/HMF_data/DR-104-update3//somatics/160604_HMFreg0056_FR10302045_FR10302046_CPCT02020267/purple/CPCT02020267T.purple.somatic.vcf.gz' ## Job fail
+   # vcf.file='/Users/lnguyen/hpc/cuppen/shared_resources/PCAWG/pipeline5/per-donor//DO217817-from-jar//purple25/DO217817T.purple.somatic.vcf.gz' ## Job fail
    # vcf.filter='PASS'
    # keep.chroms=c(1:22,'X')
    # merge.consecutive=F
@@ -75,7 +77,7 @@ detectKataegis <- function(
    df <- df[nchar(df$ref)==1 & nchar(df$alt)==1,]
 
    if(nrow(df)==0){
-      if(output.type=='counts'){
+      if(output.type=='count'){
          return(0)
       } else {
          return(data.frame())
@@ -176,7 +178,7 @@ detectKataegis <- function(
    
    imd_cutoff <- min(
       imd.thres,
-      quantile(imd_pcf$imd, max.imd.quantile) ## To deal with hypermutators
+      quantile(imd_pcf$imd, max.imd.quantile, na.rm=T) ## To deal with hypermutators
    )
    
    kat_segments <- segments[
