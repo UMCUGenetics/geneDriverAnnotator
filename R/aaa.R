@@ -1,7 +1,7 @@
 #========= Load default paths on package load =========#
 .onLoad <- function(libname, pkgname){
    
-   devtools::load_all(system.file('../commonUtils/',package='geneDriverAnnotator'))
+   #devtools::load_all(system.file('../commonUtils/',package='geneDriverAnnotator'))
    
    ## Java
    assign('JAVA_PATH', system('which java',intern=T), envir=parent.env(environment()))
@@ -21,6 +21,7 @@
    )
    
    for(i in pkg_paths){
+      #print(i)
       assign( i[1], system.file(i[2], package='geneDriverAnnotator'), envir=parent.env(environment()) )
    }
    
